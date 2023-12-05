@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1699399182 source:c:\users\yuars\onedrive - kocaeli universitesi uzaktan egitim merkezi\masaüstü\c\sistemler\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
