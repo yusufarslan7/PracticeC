@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-long fibonacci(long);
+double fibonacci(double);
 
 int main()
 {
@@ -9,11 +9,11 @@ int main()
 
     printf("Bir tamsayi giriniz: ");
     scanf("%d",&sayi);
-    printf("Fibonacci %d.basamak: %ld",sayi,fibonacci(sayi));
+    printf("Fibonacci %d.basamak: %.lf",sayi,fibonacci(sayi));
     return 0;
 }
 
-long fibonacci(long a)
+double fibonacci(double a)
 {
     if(a==0){
         return 0;

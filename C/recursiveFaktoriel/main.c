@@ -9,7 +9,6 @@ int main()
     printf("sayi gir: ");
     scanf("%d",&number);
     printf("%lld faktoriyel == %llu\n",number,faktoriyel(number));
-    printf("%d",sizeof(faktoriyel(number)));
 
     return 0;
 }
