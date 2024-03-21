@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1708983178 source:c:\users\yuars\onedrive - kocaeli universitesi uzaktan egitim merkezi\belgeler\github\practicec\c\kaleler\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
