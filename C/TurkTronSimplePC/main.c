@@ -14,6 +14,7 @@
 
 #define OKU 10
 #define YAZ 11
+#define STRYAZ 12
 
 #define YUKLE 20
 #define SAKLA 21
@@ -29,11 +30,13 @@
 #define SIFIRDALLAN 42
 #define BITIR 43
 
-void ProgramGir(int []);
-void ProgramCalistir(int [],int *);
+
 
 int main()
 {
+    void ProgramGir(int []);
+    void ProgramCalistir(int [],int *);
+
     int hafiza[100]={0};
     int akumulator=0;
     int *ACptr=&akumulator;
@@ -71,6 +74,7 @@ void ProgramCalistir(int hafiza[],int *AC)
     void Dallan(int *,int *);
     void EksiDallan(int *,int *,int *);
     void SifirDallan(int *, int *,int *);
+    void StrYaz(int *);
 
     int PC=0;
     int secim=0;
@@ -86,6 +90,9 @@ void ProgramCalistir(int hafiza[],int *AC)
                 break;
             case 11:
                 Yaz(&hafiza[adres]);
+                break;
+            case 12:
+                StrYaz(&hafiza[adres]);
                 break;
             case 20:
                 Yukle(&hafiza[adres],AC);
@@ -179,4 +186,13 @@ void EksiDallan(int *PC,int *adres,int *AC)
 void SifirDallan(int *PC,int *adres,int *AC)
 {
     if(*AC==0)*PC=*adres;
+}
+
+void StrYaz(int *hafiza)
+{
+    for(int i=0;*(hafiza+i)!=0;i++)
+    {
+        printf("%c",*(hafiza+i));
+    }
+    printf("\n");
 }
