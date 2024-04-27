@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1713608330 source:c:\users\yuars\onedrive - kocaeli universitesi uzaktan egitim merkezi\belgeler\github\practicec\c\postatest\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

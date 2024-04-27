@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1713532943 source:c:\users\yuars\onedrive - kocaeli universitesi uzaktan egitim merkezi\belgeler\github\practicec\c\kartdagit\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

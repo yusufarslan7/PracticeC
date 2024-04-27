@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1713996791 source:c:\users\yuars\onedrive - kocaeli universitesi uzaktan egitim merkezi\belgeler\github\practicec\c\sezarsifreleme101\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+
