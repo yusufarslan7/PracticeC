@@ -54,7 +54,7 @@ void ProgramGir(int hafiza[])
     {
         sayici++;
         printf("%02d ? ",sayici);
-        scanf("%d",&hafiza[sayici]);
+        scanf("%5d",&hafiza[sayici]);
         fflush(stdin);
     }
 

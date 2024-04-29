@@ -1,157 +1,176 @@
+/*ORNEK PROGRAM:
+1030 #30.hafiza bolgesine klavyeden giris al.
+1031 #31.hafiza bolgesine klavyeden giris al.
+2030 #30.hafiza bolgesindeki degeri akumulatore yukle
+3031 #31.hafiza bolgesindeki deger ile akumulatordeki degeri topla ve akumulatore yukle.
+2132 #Akumulatordeki degeri 32.hafiza bolgesine yukle.
+1132 #32.hafiza bolgesindeki degeri ekrana yazdir.
+4300 #Programdan cik.
+-9999 #yazim asamasini sonlandir.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <math.h>
 
-char melee_weapons[300] = {"! Sopa ! Bicak ! Kalkan ! Kilic ! Mizrak ! Gurz ! Savas Baltasi ! Savas Cekici ! Baltali Kargi ! Katana ! Buyuk Kilic ! Ekskalibur !"};
-char ranged_weapons[300] = {"! Sapan ! Firlatma Bicaklari ! Yay ! Cirit ! Kundakli Yay ! Altipatlar ! Tufek ! Roket Atar ! Mitralyoz !"};
-char magic_weapons[300] = {"! Asa ! Supurge ! Kitap! Buyu Flutu! Buyuk Asa ! Buyu Karti ! Buyulu Kure ! Arkanum !"};
-char prefixes[300] = {"! Bakir ! Demir ! Celik ! Obsidyen ! Kristal ! Hiz ! Olum karisimli ! Teknolojik ! Yikim ! Hiper Olum ! Sonsuzluk ! Izgara Peynir !"};
-char elements[300] = {"! Atevli! Su Elementi! Hava Fiskirtan! Zehirli! Elektrikli! Buz Yayan! Kara Element! Toprak Bozan! Kutsal Element! Patlama Destekli!"};
-char postfixes[300] = {"!Ufak!Buyuk!Keskin!Tehlikeli!Guclu!Kanli!Dovulmus!Yukseltilmis!Sihirli!Nadir!Kutsal!Sibernetik!Gercekdisi!Mistik!Efsanevi!"};
-char postfix[40] = {0};
-char element[40] = {0};
-char main_part[20] = {0};
-char prefix[20] = {0};
-short main_class = 0;
+#define OKU 10 //hafizaya elle input gir
+#define YAZ 11 //hafizadaki degeri yazdir
+#define KYAZ 12 //belirtilen bolmeden baslayarak 0'a ulasana dek hafiza bolmesindeki degerin ASCII karsiligini ekrana yazdir.
 
-// 12 melee
-// 9 ranged
-// 8 magic
-// 15 prefix
-// 10 element
-// 12 postfix
+#define YUKLE 20 //akumulatore hafiza degerini yukle
+#define SAKLA 21 //hafizaya akumulatorden deger yukle
 
-void SummonTheListPickingFunctionsAccordingToTheParameters(short, float);
-void RandomizeWeapon(char* ,char* ,float, short);
-short RandButLiterallyBetter(short, float);
+#define TOPLA 30 //akumulatorle girilen hafiza bolmesindeki degeri topla
+#define CIKART 31 //akumulatorle girilen hafiza bolmesindeki degeri cikart
+#define BOL 32  //akumulatorle girilen hafiza bolmesindeki degeri carp
+#define CARP 33 //akumulatorle girilen hafiza bolmesindeki degeri BOL
+#define ARTIBIR 34 //akumulatoru 1 arttir
+
+#define DALLAN 40 //PC yi belirtilen adrese ayarla
+#define EKSIDALLAN 41 //AC degeri negatif ise PC yi belirtilen adrese ayarla
+#define SIFIRDALLAN 42 //AC degeri 0 ise PC yi belirtilen adrese ayarla
+#define BITIR 43 //programi sonlandir
+
+void ProgramGir(int []);
+void ProgramCalistir(int []);
+
+register int PC=0;
+register int AC=0;
 
 int main()
 {
-    short choice=0;
-    memset(main_part,0,20);
-    srand(time(NULL)); // shitty chest = 2 luck,    standard = 1.5 luck    good chest = 1.25 luck    legendary chest = 1 luck
-    start:
-    printf("What would you like to do? \n1-)Open Shitty Chest.\n2-)Open Standard Chest.\n3-)Open Good Chest.\n4-)Open Legendary Chest.\n");
-    scanf("%hd", &choice);
-    switch(choice)
-    {
-    case 1:
-            memset(main_part,0,20);
-            memset(prefix,0,20);
-            memset(element,0,40);
-            memset(postfix,0,40);
-            SummonTheListPickingFunctionsAccordingToTheParameters(1,2);
-            printf("\nYou got%s%s%s%s!\n\n",element,prefix,postfix,main_part);
-        break;
-    case 2:
-            memset(main_part,0,20);
-            memset(prefix,0,20);
-            memset(element,0,40);
-            memset(postfix,0,40);
-            SummonTheListPickingFunctionsAccordingToTheParameters(1,1.5);
-            printf("\nYou got%s%s%s%s!\n\n",element,prefix,postfix,main_part);
-        break;
-    case 3:
-            memset(main_part,0,20);
-            memset(prefix,0,20);
-            memset(element,0,40);
-            memset(postfix,0,40);
-            SummonTheListPickingFunctionsAccordingToTheParameters(1,1.25);
-            printf("\nYou got%s%s%s%s!\n\n",element,prefix,postfix,main_part);
-        break;
-    case 4:
-            memset(main_part,0,20);
-            memset(prefix,0,20);
-            memset(element,0,40);
-            memset(postfix,0,40);
-            SummonTheListPickingFunctionsAccordingToTheParameters(1,1);
-            printf("\nYou got%s%s%s%s!\n\n",element,prefix,postfix,main_part);
-        break;
-    default:
-        break;
-    }
-    goto start;
+    int hafiza[100]={0};
+    ProgramGir(hafiza);
+    ProgramCalistir(hafiza);
     return 0;
 }
 
-void RandomizeWeapon(char* names, char* picked_name, float luck, short randomtype)
+void ProgramGir(int hafiza[])
 {
-    short count=0, picked=0;
-    int i=0, j=0;
-    for(i=0; *(names+i)!='\0' ;i++) //check to see how many '!' are present
+    int sayici=-1;
+    printf("***DANDIKSAYAR'A HOSGELDINIZ***\n***PROGRAM GIRMEK ICIN KODUN***\n***GIRISINDEKI YONERGEDEN FAYDALANABILIRSINIZ***\n***CIKIS ICIN -9999 GIRISI YAPINIZ***\n\n\n");
+    while(hafiza[sayici]!=-9999)
     {
-        if(*(names+i)=='!')
-            count++;
-    }
-    count--; //weapon count is 1 lower than '!' count
-    if(randomtype==1)picked = RandButLiterallyBetter(count, luck);
-    else picked = (rand()%count)+1;
-    for(i=0, count=0; picked!=count ;i++) //go to the '!' of the randomly picked weapon
-    {
-        if(*(names+i)=='!')
-            count++;
-    }
-    for(j=0; *(names+i)!='!' ;i++,j++) //print weapon name until hits '!' into the main_part
-    {
-        picked_name[j] = *(names+i); //gets pretty funny if u replace picked_name with main_part
+        sayici++;
+        printf("%02d ? ",sayici);
+        scanf("%5d",&hafiza[sayici]);
+        fflush(stdin);
     }
 }
 
-short RandButLiterallyBetter(short possibilities, float luck)
+void ProgramCalistir(int hafiza[])
 {
-    short i=possibilities;
-    double randval=0;
-    if(luck>1.25)
+    void OkuYadaYaz(int *,short);
+    void KYAZ(int *);
+    void YukleVeyaSakla(int *,int *);
+    void DortIslem(int *,int *,short);
+    void ToplaBir(int*);
+    void Dallanizm(int *,int *,int *,short);
+
+    int secim=0;
+    int adres=0;
+    while(secim!=43)
     {
-        randval = (((rand()%100000)+1)/100000.0)+(0.95/pow(i,luck)); //0.00001
-        for(i=possibilities; possibilities>0 ;i--)
-        {
-            if(randval<=(1/pow(i,luck)))
-            {
-                return i;
-            }
+        secim=hafiza[PC]/100;
+        adres=hafiza[PC]%100;
+        PC++;
+        switch(secim){
+            case 10:
+                OkuYadaYaz(&hafiza[adres],1);
+                break;
+            case 11:
+                OkuYadaYaz(&hafiza[adres],2);
+                break;
+            case 12:
+                KYaz(&hafiza[adres]);
+                break;
+            case 20:
+                YukleVeyaSakla(&hafiza[adres],AC);
+                break;
+            case 21:
+                YukleVeyaSakla(AC,&hafiza[adres]);
+                break;
+            case 30:
+                DortIslem(&hafiza[adres],AC,1);
+                break;
+            case 31:
+                DortIslem(&hafiza[adres],AC,2);
+                break;
+            case 32:
+                DortIslem(&hafiza[adres],AC,3);
+                break;
+            case 33:
+                DortIslem(&hafiza[adres],AC,4);
+                break;
+            case 34:
+                ToplaBir(AC);
+                break;
+            case 40:
+                Dallanizm(&PC,&adres,AC,1);
+                break;
+            case 41:
+                Dallanizm(&PC,&adres,AC,2);
+                break;
+            case 42:
+                Dallanizm(&PC,&adres,AC,3);
         }
     }
-    else
-    {
-        randval = (((rand()%100000)+1)/100000.0)+(1.37/pow(i,luck)); //0.00001
-        for(i=possibilities; possibilities>0 ;i--)
-        {
-            if(randval<=((1/pow(i,luck))+(5/pow(i,luck+1))))
-            {
-                return i;
-            }
-        }
-    }
-    return 1;
 }
 
-void SummonTheListPickingFunctionsAccordingToTheParameters(short mode, float luck)
-{ // mode is leftover variable and has no useful function, Im too lazy to remove it
-    if(mode==1)
+void OkuYadaYaz(int *hafiza,short tip)
+{
+    switch(tip)
     {
-        short r=rand()%3;
-        switch(r)
-        {
-        case 0:
-            main_class = 1;
-            RandomizeWeapon(melee_weapons, main_part, luck, 1);
-            break;
-        case 1:
-            main_class = 2;
-            RandomizeWeapon(ranged_weapons, main_part, luck, 1);
-            break;
-        case 2:
-            main_class = 3;
-            RandomizeWeapon(magic_weapons, main_part, luck, 1);
-            break;
-        default:
-            break;
-        }
-        if((rand()%100)+1 > pow(luck,3)*10) RandomizeWeapon(prefixes, prefix, luck, 1);
-        if((rand()%100)+1 > pow(luck,3)*12) RandomizeWeapon(elements, element, luck, 2);
-        if((rand()%100)+1 > pow(luck,3)*10) RandomizeWeapon(postfixes, postfix, luck, 1);
+    case 1:
+        scanf("%d",hafiza);
+        fflush(stdin);
+        break;
+    case 2:
+        printf("%d\n",*hafiza);
+        break;
     }
+}
+
+void KYaz(int *hafiza)
+{
+    for(int i=0;*(hafiza+i)!=0;i++)
+    {
+        printf("%c",*(hafiza+i));
+    }
+    printf("\n");
+}
+
+void YukleVeyaSakla(int *A,int *B)
+{
+    *B=*A;
+}
+
+void DortIslem(int *hafiza,int *AC,short tip)
+{
+    switch(tip)
+    {
+    case 1: //topla
+        *AC+=*hafiza;
+        break;
+    case 2: //cikar
+        *AC-=*hafiza;
+        break;
+    case 3: //carp
+        *AC*=*hafiza;
+        break;
+    case 4: //bol
+        *AC/=*hafiza;
+        break;
+    }
+}
+
+void Dallanizm(int *PC,int *adres,int *AC,short tip)
+{
+    if(tip==1)*PC=*adres; //Dallan
+    else if(*AC<0 && tip==2)*PC=*adres; //EksiDallan
+    else if(*AC==0 && tip==3)*PC=*adres; //SifirDallan
+}
+
+void ToplaBir(int *AC)
+{
+    (*AC)++;
 }
