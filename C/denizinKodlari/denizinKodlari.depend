@@ -1,8 +1,10 @@
 # depslib dependency file v1.0
-1714207805 source:c:\users\yuars\onedrive - kocaeli universitesi uzaktan egitim merkezi\belgeler\github\practicec\c\denizinkodlari\main.c
+1716131739 source:c:\users\yuars\onedrive - kocaeli universitesi uzaktan egitim merkezi\belgeler\github\practicec\c\denizinkodlari\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<time.h>
 	<math.h>
+	<string.h>
+	<ctype.h>
 
