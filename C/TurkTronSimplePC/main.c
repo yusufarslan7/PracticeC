@@ -14,7 +14,6 @@
 
 #define OKU 10 //hafizaya elle input gir
 #define YAZ 11 //hafizadaki degeri yazdir
-#define KYAZ 12 //belirtilen hafiza bolmesindeki degerin ASCII karsiligini ekrana yazdir.
 
 #define YUKLE 20 //akumulatore hafiza degerini yukle
 #define SAKLA 21 //hafizaya akumulatorden deger yukle
@@ -92,9 +91,6 @@ void ProgramCalistir(int hafiza[])
             case 11:
                 Yaz(&hafiza[adres]);
                 break;
-            case 12:
-                KYaz(&hafiza[adres]);
-                break;
             case 20:
                 Yukle(&hafiza[adres]);
                 break;
@@ -138,11 +134,6 @@ void Oku(int *hafiza)
 void Yaz(int *hafiza)
 {
     printf("%d\n",*hafiza);
-}
-
-void KYaz(int *hafiza)
-{
-    printf("%c", *hafiza);
 }
 
 void Yukle(int *hafiza)
