@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1717171636 source:c:\users\yuars\belgeler\github\practicec\c\basicfileread\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
