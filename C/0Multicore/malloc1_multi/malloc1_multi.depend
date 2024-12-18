@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1734357050 source:c:\users\yuars\belgeler\github\practicec\c\0multicore\malloc1_multi\main.c
+	<stdio.h>
+	<stdlib.h>
+	<omp.h>
+

@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1733478687 source:c:\users\yuars\belgeler\github\practicec\c\0multicore\philosophers_multicore\main.c
+	<unistd.h>
+	<stdlib.h>
+	<stdio.h>
+	<pthread.h>
+	<errno.h>
+	<stdbool.h>
+

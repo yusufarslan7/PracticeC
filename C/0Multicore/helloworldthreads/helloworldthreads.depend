@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1734359436 source:c:\users\yuars\belgeler\github\practicec\c\0multicore\helloworldthreads\main.c
+	<stdio.h>
+	<stdlib.h>
+	<omp.h>
+

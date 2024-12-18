@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1734368980 source:c:\users\yuars\belgeler\github\practicec\c\0multicore\parallelfor\main.c
+	<stdio.h>
+	<stdlib.h>
+	<omp.h>
+	<pthread.h>
+

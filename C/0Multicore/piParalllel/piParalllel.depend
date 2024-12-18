@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1734371229 source:c:\users\yuars\belgeler\github\practicec\c\0multicore\piparalllel\main.c
+	<stdio.h>
+	<stdlib.h>
+	<omp.h>
+	<math.h>
+	<quadmath.h>
+

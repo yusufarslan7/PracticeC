@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1731802467 source:c:\users\yuars\belgeler\github\practicec\c\omptraining\main.c
+	<stdio.h>
+	<stdlib.h>
+	<omp.h>
+
